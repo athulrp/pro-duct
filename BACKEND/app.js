@@ -16,6 +16,12 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
 app.use('/api',api)
 
+app.use(express.static(__dirname + '/dist/products'));
+app.get('/*', function(req,res) {
+res.sendFile(path.join(__dirname+
+'/dist/products/index.html'));});
+
+
 
 
 
