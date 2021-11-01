@@ -1,0 +1,14 @@
+<h1> {{title}} </h1>
+<div class="card-header">
+    <a routerLink='/list'>Products</a>
+    <a routerLink='/add' >Add Product</a>
+
+
+    <a routerLink='/register' *ngIf = '!_auth.loggedIn()'>Register</a>
+    <a routerLink='/login'  *ngIf = '!_auth.loggedIn()' >Login</a>
+    <a style="cursor:pointer" *ngIf = '_auth.loggedIn()' (click) = 'logoutUser()' >Logout</a>
+    
+
+
+
+</div>

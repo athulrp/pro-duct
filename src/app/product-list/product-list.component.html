@@ -1,0 +1,55 @@
+<div class="card">
+    <div class="card-header">
+        {{title}}
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            <button class="btn btn-primary" (click)='toggleImage()'>
+                                <!-- images are hidden button will show image (vice versa) -->
+                                <!-- showImage is true =>print 'Hide Image', showImage is false =>print 'Show Image'-->
+                                {{showImage ? 'Hide' : 'Show'}} Image 
+                            </button>
+                        </th>
+                        <th>Product</th>
+                        <th>Code</th>
+                        <th>Available</th>
+                        <th>Price</th>
+                        <th>5 Star Rating</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor = 'let product of products ; let i = index'>
+                        <td><img *ngIf='showImage' 
+                            [src] = 'product.imageUrl'
+                            [title] = 'product.productName'
+                            [style.width.px] = 'imageWidth'
+                            [style.margin.px] = 'imageMargin'>
+                        </td>
+                        <td>{{ product.productName }}</td>
+                        <td>{{ product.productCode }}</td>
+                        <td>{{ product.releaseDate }}</td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.starRating }}</td>
+                        <td>
+                            <button class="btn btn-success styl" (click)='editProduct(product)'>update</button>
+
+                            <button class="btn btn-danger styl" type="submit" (click) = 'removeProduct(product , i)'>delete</button>
+                        </td>
+                        
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- [routerLink]="['/change', product ]" -->

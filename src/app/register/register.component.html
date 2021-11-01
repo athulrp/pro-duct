@@ -1,0 +1,50 @@
+
+<div class="py-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <span class="anchor" id="formLogin"></span>
+            
+            <!-- form card Register -->
+
+            <div class="card rounded-0">
+                <div class="card-header">
+                  <h3 class="mb-0">Register</h3>
+                </div>
+                <div class="card-body">
+
+                    <form name="form" #UR = "ngForm" (ngSubmit)="UR.form.valid && registerUser()" novalidate>
+
+                        <div class="form-group">
+                            <label for="uname1">Email address</label>
+                            <input type="text" name="email" [(ngModel)]="registeredUser.email" #email="ngModel" [ngClass]="{ 'is-invalid': UR.submitted && email.invalid }" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required >
+                            <div *ngIf="UR.submitted && email.invalid" class="invalid-feedback">
+                                <div *ngIf="email.errors.required">Email is required</div>
+                                <div *ngIf="email.errors.pattern">Email must be a valid email address</div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="password" [(ngModel)]="registeredUser.password" #password="ngModel" [ngClass]="{ 'is-invalid': UR.submitted && password.invalid }"  class="form-control" id="exampleInputPassword1" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@\[-`{-~]).{6,20}$" minlength="6" required >
+                            <div *ngIf="UR.submitted && password.invalid" class="invalid-feedback">
+                                <div *ngIf="password.errors.required">Password is required</div>
+                                <div *ngIf="password.errors.pattern">Password Must contain : <br> At least One number , <br> One uppercase , <br> One lowercase , <br> One special character</div>
+
+                                <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+                                
+                            </div>
+
+                        </div>
+                        
+                        <button type="submit"  class="btn btn-primary">Register</button>
+
+                    </form>
+
+                </div>
+            </div>
+            <!-- /form card Register -->
+
+
+        </div>
+    </div>
+</div>
